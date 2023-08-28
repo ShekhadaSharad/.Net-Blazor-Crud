@@ -1,0 +1,85 @@
+﻿@page "/EmployeesList"
+@using BlazorServerApp.Data
+@using BlazorServerApp.Models;
+@using BlazorServerApp.Model;
+@inject EmployeesService employeesService
+@inject RolesService rolesService
+
+<NavLink class="nav-link" href="AddNewEmployee">
+    <span class="oi oi-plus" aria-hidden="true">Add New Employee</span>
+</NavLink>
+
+<h3>EmployeeList</h3>
+
+@if(employee is null)
+{
+    <p><em>Loading................!</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Emp No</th>
+                <th>Employee Name</th>
+                <th>Employee City</th>
+                <th>Employee Email</th>
+                <th>Employee Phone</th>
+                <th>Employee Roles</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in employee)
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.City</td>
+                    <td>@emp.Email</td>
+                    <td>@emp.Phone</td>
+                    <td>
+                        <InputSelect @bind-Value="selectedValue">
+                            <option value="">Select a role</option>
+                            @foreach (var item in roles)
+                            {
+                                <option value="@item.Id">@item.RoleName</option>
+                            }
+                        </InputSelect>
+                    </td>
+                   
+                    <td>
+                        <a class="nav-link btn btn-outline-primary" href="EditEmployee/@emp.Id">
+                            <samp class="oi oi-pencil" aria-hidden="true"> Edit</samp>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="nav-link btn btn-outline-danger" href="DeleteEmployee/@emp.Id">
+                            <samp class="oi oi-trash" aria-hidden="true"> Delete</samp>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+   
+
+
+
+    List<Employee> employee;
+
+    private string selectedValue = "";
+
+    private List<Roles> roles = new List<Roles>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        employee = await Task.Run(() => employeesService.GetAllEmployees());
+        roles = await rolesService.GetAllRolesAsync();
+    } 
+}

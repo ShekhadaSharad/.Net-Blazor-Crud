@@ -1,0 +1,54 @@
+﻿@page "/RolesList"
+@using BlazorServerApp.Data
+@using BlazorServerApp.Model
+@inject RolesService rolesService
+
+<NavLink class="nav-link" href="AddNewRoles">
+    <span class="oi oi-plus" aria-hidden="true">Add New Employee</span>
+</NavLink>
+
+<h3>Roles</h3>
+@if (rolesList is null)
+{
+    <p><em>Loading................!</em></p>
+}
+else
+{
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Roles Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in rolesList)
+            {
+                <tr>
+                    <td>@role.Id</td>
+                    <td>@role.RoleName</td>
+
+                    <td>
+                        <a class="nav-link btn btn-outline-primary" href="EditRoles/@role.Id">
+                            <samp class="oi oi-pencil" aria-hidden="true">Edit</samp>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="nav-link btn btn-outline-danger" href="DeleteRoles/@role.Id">
+                            <samp class="oi oi-trash" aria-hidden="true">Delete</samp>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Roles> rolesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rolesList = await rolesService.GetAllRolesAsync();
+    }
+}

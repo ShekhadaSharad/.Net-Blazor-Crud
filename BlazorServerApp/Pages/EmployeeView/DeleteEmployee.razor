@@ -1,0 +1,63 @@
+﻿@page "/DeleteEmployee/{Id}"
+@using BlazorServerApp.Data
+@using BlazorServerApp.Models;
+@inject EmployeesService employeeservice
+@inject NavigationManager NavigationManager
+
+<h3>Delete Employee</h3>
+<hr />
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="for-group">
+                <label for="Id" class="control-lable">Id</label>
+                <label>@obj.Id</label>
+            </div>
+            <div class="for-group">
+                <label for="Name" class="control-lable">Name</label>
+                <label>@obj.Name</label>
+            </div>
+            <div class="for-group">
+                <label for="City" class="control-lable">City</label>
+                <label>@obj.City</label>
+            </div>
+            <div class="for-group">
+                <label for="Email" class="control-lable">Email</label>
+                <label>@obj.Email</label>
+            </div>
+            <div class="for-group">
+                <label for="Phone" class="control-lable">Phone</label>
+                <label>@obj.Phone</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-outline-danger" @onclick="@DeleteEmployeeRecord" value=" Delete Employee" />
+                <input type="button" class="btn btn-outline-danger" @onclick="@Cancal" value="Cancal" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    Employee obj = new Employee();
+
+    protected override async Task OnInitializedAsync()
+    {
+        obj = await Task.Run(() => employeeservice.GetEmployeesByIdAsync((Convert.ToInt32(Id))));
+    }
+
+    protected async void DeleteEmployeeRecord()
+    {
+        await employeeservice.DeleteEmployee(obj);
+        NavigationManager.NavigateTo("EmployeesList");
+    }
+    protected async void Cancal()
+    {
+        NavigationManager.NavigateTo("AddNewEmployee");
+    }
+}

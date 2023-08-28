@@ -1,0 +1,25 @@
+@page "/dataList"
+@using Syncfusion.Blazor.DropDowns
+<h3>Data List</h3>
+<SfListBox TValue="string[]" DataSource="@Vehicles" TItem="VehicleData">
+    <ListBoxSelectionSettings Mode="Syncfusion.Blazor.DropDowns.SelectionMode.Multiple"></ListBoxSelectionSettings>
+    <ListBoxFieldSettings Text="Text" Value="Id" />
+</SfListBox>
+
+@code {
+    public List<VehicleData> Vehicles = new List<VehicleData> {
+        new VehicleData { Text = "Hennessey Venom" },
+        new VehicleData { Text = "Bugatti Chiron"},
+        new VehicleData { Text = "Bugatti Veyron Super Sport" },
+        new VehicleData { Text = "SSC Ultimate Aero" },
+        new VehicleData { Text = "Koenigsegg CCR"},
+        new VehicleData { Text = "McLaren F1" },
+        new VehicleData { Text = "Aston Martin One- 77" },
+        new VehicleData { Text = "Jaguar XJ220"}
+    };
+
+    public class VehicleData
+    {
+        public string Text { get; set; }
+    }
+}

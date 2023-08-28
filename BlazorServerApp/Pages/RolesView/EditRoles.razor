@@ -1,0 +1,49 @@
+﻿@page "/EditRoles/{Id}"
+@using BlazorServerApp.Data
+@using BlazorServerApp.Model;
+@inject RolesService Roleservice
+@inject NavigationManager NavigationManager
+
+<h3>AddNewRoles</h3>
+<hr />
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="for-group">
+                <label for="RoleName" class="control-lable">Role Name</label>
+                <input form="RoleName" class="form-control" @bind="@obj.RoleName" />
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-outline-primary" @onclick="@UpdateRoles" value=" Edit Role" />
+                <input type="button" class="btn btn-outline-danger" @onclick="@Cancal" value="Cancal" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    Roles obj = new Roles();
+
+    protected override async Task OnInitializedAsync()
+    {
+        obj = await Task.Run(() => Roleservice.GetRolesByIdAsync((Convert.ToInt32(Id))));
+    }
+
+
+    protected async void UpdateRoles()
+    {
+        await Roleservice.AddNewRolesAsync(obj);
+        NavigationManager.NavigateTo("RolesList");
+    }
+    protected async void Cancal()
+    {
+        NavigationManager.NavigateTo("RolesList");
+    }
+}

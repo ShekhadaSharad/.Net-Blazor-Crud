@@ -1,0 +1,68 @@
+﻿@page "/EditEmployee/{Id}"
+@using BlazorServerApp.Data
+@using BlazorServerApp.Models;
+@inject EmployeesService employeeservice
+@inject NavigationManager NavigationManager
+
+
+
+<h3>Edit Employee</h3>
+<hr />
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="for-group">
+                <label for="Id" class="control-lable">Id</label>
+                <input form="Id" class="form-control" @bind="@obj.Id" />
+            </div>
+            <div class="for-group">
+                <label for="Name" class="control-lable">Name</label>
+                <input form="Name" class="form-control" @bind="@obj.Name" />
+            </div>
+            <div class="for-group">
+                <label for="City" class="control-lable">City</label>
+                <input form="City" class="form-control" @bind="@obj.City" />
+            </div>
+            <div class="for-group">
+                <label for="Email" class="control-lable">Email</label>
+                <input form="Email" class="form-control" @bind="@obj.Email" />
+            </div>
+            <div class="for-group">
+                <label for="Phone" class="control-lable">Phone</label>
+                <input form="Phone" class="form-control" @bind="@obj.Phone" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-outline-primary" @onclick="@UpdateEmployee" value=" Edit Employee" />
+                <input type="button" class="btn btn-outline-danger" @onclick="@Cancal" value="Cancal" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    Employee obj = new Employee();
+
+    protected override async Task OnInitializedAsync()
+    {
+        obj = await Task.Run(() => employeeservice.GetEmployeesByIdAsync((Convert.ToInt32(Id))));
+    }
+
+
+    protected async void UpdateEmployee()
+    {
+        await employeeservice.AddNewEmployeesAsync(obj);
+        NavigationManager.NavigateTo("EmployeesList");
+    }
+    protected async void Cancal()
+    {
+        NavigationManager.NavigateTo("AddNewEmployee");
+    }
+}

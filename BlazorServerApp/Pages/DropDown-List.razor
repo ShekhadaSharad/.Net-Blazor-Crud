@@ -1,0 +1,101 @@
+﻿@page "/dropdown-example"
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Components.Forms
+<h3>Dropdown Checkbox List</h3>
+
+<label for="checkboxDropdown">Select Items:</label>
+<div class="dropdown" >
+    <button @onclick="ToggleDropdown">Toggle Dropdown</button>
+    <div class="dropdown-content" style="display: @(isDropdownOpen ? "block" : "none")">
+        @foreach (var item in items)
+        {
+            <label>
+                <input type="checkbox" @bind="item.Selected" />
+                @item.Name
+            </label>
+            <br>
+        }
+    </div>
+</div>
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        border: 1px solid #ccc;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 10px;
+        z-index: 1;
+    }
+</style>
+@code {
+    private bool isDropdownOpen = false;
+
+    private List<CheckboxItem> items = new List<CheckboxItem>
+    {
+        new CheckboxItem { Name = "Item 1", Selected = false },
+        new CheckboxItem { Name = "Item 2", Selected = false },
+        new CheckboxItem { Name = "Item 3", Selected = false }
+    };
+
+    private void ToggleDropdown()
+    {
+        isDropdownOpen = !isDropdownOpen;
+    }
+
+    private class CheckboxItem
+    {
+        public string Name { get; set; }
+        public bool Selected { get; set; }
+    }
+}
+
+<EditForm Model="@Model" OnValidSubmit="@Submit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>
+            <input type="checkbox" @bind="showDropdown"> Show Dropdown
+        </label>
+    </div>
+
+    @if (showDropdown)
+    {
+        <div>
+            <label>
+                Primary Classification:
+                <InputSelect @bind-Value="Model.Classification">
+                    <option value="">Select classification ...</option>
+                    <option value="Exploration">Exploration</option>
+                    <option value="Diplomacy">Diplomacy</option>
+                    <option value="Defense">Defense</option>
+                </InputSelect>
+            </label>
+        </div>
+    }
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</EditForm>
+
+@code {
+    private bool showDropdown = false;
+    private Starship Model = new Starship();
+
+    private void Submit()
+    {
+    }
+
+    public class Starship
+    {
+        [Required(ErrorMessage = "Classification is required.")]
+        public string Classification { get; set; } = string.Empty;
+    }
+}

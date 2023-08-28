@@ -1,0 +1,45 @@
+﻿@page "/"
+@using BlazorServerApp.Data
+@using BlazorServerApp.Model
+@inject RolesService rolesService
+
+<h3>Dropdown Example</h3>
+<InputSelect Id="serviceRequested" @bind-Value="selectedValue" class="form-control" style="width:auto; margin-bottom:15px">
+    <option value="">Select a role</option>
+    @foreach (var item in rolesIsChek)
+    {
+        <div>
+            <input type="checkbox" @bind="item.IsChecked" />
+            <label>@item.RoleName</label>
+        </div>
+    }
+</InputSelect>
+
+<p>Selected Value: @selectedValue</p>
+ 
+@code {
+    List<Roles> rolesList;
+    private List<RoleCheckboxItem> rolesIsChek = new List<RoleCheckboxItem>
+    {
+        new RoleCheckboxItem { RoleName = "Admin", IsChecked = false },
+        new RoleCheckboxItem { RoleName = "User", IsChecked = false }
+
+    };
+    private class RoleCheckboxItem
+    {
+        public string RoleName { get; set; }
+        public bool IsChecked { get; set; }
+    }
+    private string selectedValue = "";
+    protected override async Task OnInitializedAsync()
+    {
+        if (rolesService == null)
+        {
+            Console.WriteLine("rolesService is null");
+        }
+        else
+        {
+            rolesList = await rolesService.GetAllRolesAsync();
+        }
+    }
+}
