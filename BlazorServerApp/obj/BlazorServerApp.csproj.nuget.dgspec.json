@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\digip\\Desktop\\BlazorServerApp\\BlazorServerApp\\BlazorServerApp.csproj": {}
+    "C:\\BlazorCrud-\\BlazorServerApp\\BlazorServerApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\digip\\Desktop\\BlazorServerApp\\BlazorServerApp\\BlazorServerApp.csproj": {
+    "C:\\BlazorCrud-\\BlazorServerApp\\BlazorServerApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\digip\\Desktop\\BlazorServerApp\\BlazorServerApp\\BlazorServerApp.csproj",
+        "projectUniqueName": "C:\\BlazorCrud-\\BlazorServerApp\\BlazorServerApp.csproj",
         "projectName": "BlazorServerApp",
-        "projectPath": "C:\\Users\\digip\\Desktop\\BlazorServerApp\\BlazorServerApp\\BlazorServerApp.csproj",
+        "projectPath": "C:\\BlazorCrud-\\BlazorServerApp\\BlazorServerApp.csproj",
         "packagesPath": "C:\\Users\\digip\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\digip\\Desktop\\BlazorServerApp\\BlazorServerApp\\obj\\",
+        "outputPath": "C:\\BlazorCrud-\\BlazorServerApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

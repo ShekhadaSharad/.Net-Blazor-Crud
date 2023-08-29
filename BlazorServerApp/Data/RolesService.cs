@@ -1,5 +1,4 @@
 ﻿using BlazorServerApp.Model;
-using BlazorServerApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorServerApp.Data
@@ -41,7 +40,7 @@ namespace BlazorServerApp.Data
         {
             try
             {
-                Roles Roles = await _employee.Roles.FirstOrDefaultAsync(x => x.Id == id);
+                Roles? Roles = await _employee.Roles.FirstOrDefaultAsync(x => x.Id.Equals(id));
                 return Roles;
             }
             catch (Exception ex)
@@ -70,7 +69,7 @@ namespace BlazorServerApp.Data
         {
             try
             {
-                _employee?.Roles.Remove(roles);
+                _employee.Roles.Remove(roles);
                 await _employee.SaveChangesAsync();
                 return true;
             }

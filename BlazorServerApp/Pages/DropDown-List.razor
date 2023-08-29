@@ -1,101 +1,214 @@
 ﻿@page "/dropdown-example"
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.Components.Forms
+@using BlazorServerApp.Data
+@using BlazorServerApp.Model
+@using Syncfusion.Blazor.DropDowns
+@inject RolesService rolesService
 <h3>Dropdown Checkbox List</h3>
 
-<label for="checkboxDropdown">Select Items:</label>
-<div class="dropdown" >
-    <button @onclick="ToggleDropdown">Toggle Dropdown</button>
-    <div class="dropdown-content" style="display: @(isDropdownOpen ? "block" : "none")">
-        @foreach (var item in items)
+<div class="dropdown" data-control="checkbox-dropdown">
+    <label class="dropdown-label" @onclick="ToggleDropdown">Select</label>
+
+    <div class="dropdown-list">
+        <a href="#" data-toggle="check-all" class="dropdown-option">
+            Check All
+        </a>
+        @if (rolesList != null)
         {
-            <label>
-                <input type="checkbox" @bind="item.Selected" />
-                @item.Name
-            </label>
-            <br>
+            @foreach (var item in rolesList)
+            {
+                <label class="dropdown-option">
+                    <input type="checkbox" name="dropdown-group" @bind="item.IsChecked" value="Selection 1" />
+                    @item.RoleName
+                </label>
+            }
         }
     </div>
+    <input type="submit"  />
 </div>
+
+@code {
+    private List<Roles> rolesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rolesList = await rolesService.GetAllRolesAsync();
+    }
+
+    private async Task ToggleDropdown()
+    {
+        if (rolesList == null)
+        {
+            rolesList = await rolesService.GetAllRolesAsync();
+        }
+    }
+} 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: #379937;
+    }
+
     .dropdown {
         position: relative;
-        display: inline-block;
+        font-size: 14px;
+        color: #333;
     }
 
-    .dropdown-content {
-        border: 1px solid #ccc;
+    .dropdown-list {
+        padding: 12px;
+        background: #fff;
         position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        padding: 10px;
-        z-index: 1;
+        top: 30px;
+        left: 2px;
+        right: 2px;
+        box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .15);
+        transform-origin: 50% 0;
+        transform: scale(1, 0);
+        transition: transform .15s ease-in-out .15s;
+        max-height: 66vh;
+        overflow-y: scroll;
     }
+
+    .dropdown-option {
+        display: block;
+        padding: 8px 12px;
+        opacity: 0;
+        transition: opacity .15s ease-in-out;
+    }
+
+    .dropdown-label {
+        display: block;
+        height: 30px;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+        .dropdown-label:before {
+            content: '▼';
+            float: right;
+        }
+
+    .on .dropdown-list {
+        transform: scale(1, 1);
+        transition-delay: 0s;
+    }
+
+    .on .dropdown-option {
+        opacity: 1;
+        transition-delay: .2s;
+    }
+
+    .on .dropdown-label:before {
+        content: '▲';
+    }
+
+    [type="checkbox"] {
+        position: relative;
+        top: -1px;
+        margin-right: 4px;
+    }
+
 </style>
-@code {
-    private bool isDropdownOpen = false;
+<script>
+    (function ($) {
+        var CheckboxDropdown = function (el) {
+            var _this = this;
+            this.isOpen = false;
+            this.areAllChecked = false;
+            this.$el = $(el);
+            this.$label = this.$el.find('.dropdown-label');
+            this.$checkAll = this.$el.find('[data-toggle="check-all"]').first();
+            this.$inputs = this.$el.find('[type="checkbox"]');
 
-    private List<CheckboxItem> items = new List<CheckboxItem>
-    {
-        new CheckboxItem { Name = "Item 1", Selected = false },
-        new CheckboxItem { Name = "Item 2", Selected = false },
-        new CheckboxItem { Name = "Item 3", Selected = false }
-    };
+            this.onCheckBox();
 
-    private void ToggleDropdown()
-    {
-        isDropdownOpen = !isDropdownOpen;
-    }
+            this.$label.on('click', function (e) {
+                e.preventDefault();
+                _this.toggleOpen();
+            });
 
-    private class CheckboxItem
-    {
-        public string Name { get; set; }
-        public bool Selected { get; set; }
-    }
-}
+            this.$checkAll.on('click', function (e) {
+                e.preventDefault();
+                _this.onCheckAll();
+            });
 
-<EditForm Model="@Model" OnValidSubmit="@Submit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+            this.$inputs.on('change', function (e) {
+                _this.onCheckBox();
+            });
+        };
 
-    <div>
-        <label>
-            <input type="checkbox" @bind="showDropdown"> Show Dropdown
-        </label>
-    </div>
+        CheckboxDropdown.prototype.onCheckBox = function () {
+            this.updateStatus();
+        };
 
-    @if (showDropdown)
-    {
-        <div>
-            <label>
-                Primary Classification:
-                <InputSelect @bind-Value="Model.Classification">
-                    <option value="">Select classification ...</option>
-                    <option value="Exploration">Exploration</option>
-                    <option value="Diplomacy">Diplomacy</option>
-                    <option value="Defense">Defense</option>
-                </InputSelect>
-            </label>
-        </div>
-    }
+        CheckboxDropdown.prototype.updateStatus = function () {
+            var checked = this.$el.find(':checked');
 
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-</EditForm>
+            this.areAllChecked = false;
+            this.$checkAll.html('Check All');
 
-@code {
-    private bool showDropdown = false;
-    private Starship Model = new Starship();
+            if (checked.length <= 0) {
+                this.$label.html('Select Options');
+            }
+            else if (checked.length === 1) {
+                this.$label.html(checked.parent('label').text());
+            }
+            else if (checked.length === this.$inputs.length) {
+                this.$label.html('All Selected');
+                this.areAllChecked = true;
+                this.$checkAll.html('Uncheck All');
+            }
+            else {
+                this.$label.html(checked.length + ' Selected');
+            }
+        };
 
-    private void Submit()
-    {
-    }
+        CheckboxDropdown.prototype.onCheckAll = function (checkAll) {
+            if (!this.areAllChecked || checkAll) {
+                this.areAllChecked = true;
+                this.$checkAll.html('Uncheck All');
+                this.$inputs.prop('checked', true);
+            }
+            else {
+                this.areAllChecked = false;
+                this.$checkAll.html('Check All');
+                this.$inputs.prop('checked', false);
+            }
 
-    public class Starship
-    {
-        [Required(ErrorMessage = "Classification is required.")]
-        public string Classification { get; set; } = string.Empty;
-    }
-}
+            this.updateStatus();
+        };
+
+        CheckboxDropdown.prototype.toggleOpen = function (forceOpen) {
+            var _this = this;
+
+            if (!this.isOpen || forceOpen) {
+                this.isOpen = true;
+                this.$el.addClass('on');
+                $(document).on('click', function (e) {
+                    if (!$(e.target).closest('[data-control]').length) {
+                        _this.toggleOpen();
+                    }
+                });
+            }
+            else {
+                this.isOpen = false;
+                this.$el.removeClass('on');
+                $(document).off('click');
+            }
+        };
+
+        var checkboxesDropdowns = document.querySelectorAll('[data-control="checkbox-dropdown"]');
+        for (var i = 0, length = checkboxesDropdowns.length; i < length; i++) {
+            new CheckboxDropdown(checkboxesDropdowns[i]);
+        }
+    })(jQuery);
+</script>

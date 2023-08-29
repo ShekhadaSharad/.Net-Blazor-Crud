@@ -43,7 +43,7 @@ namespace BlazorServerApp.Data
         {
             try
             {
-                Employee employee = await _employee.Employees.FirstOrDefaultAsync(x => x.Id == id);
+                Employee? employee = await _employee.Employees.FirstOrDefaultAsync(x => x.Id.Equals(id));
                 return employee;
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace BlazorServerApp.Data
         {
             try
             {
-                _employee?.Employees.Remove(employee);
+                _employee.Employees.Remove(employee);
                 await _employee.SaveChangesAsync();
                 return true;
             }
@@ -82,6 +82,5 @@ namespace BlazorServerApp.Data
                 return false;
             }
         }
-
     }
 }

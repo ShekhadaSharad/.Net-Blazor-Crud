@@ -9,97 +9,93 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorServerApp
 build_property.RootNamespace = BlazorServerApp
-build_property.ProjectDir = C:\Users\digip\Desktop\BlazorServerApp\BlazorServerApp\
+build_property.ProjectDir = C:\BlazorCrud-\BlazorServerApp\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\digip\Desktop\BlazorServerApp\BlazorServerApp
+build_property.MSBuildProjectDirectory = C:\BlazorCrud-\BlazorServerApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/App.razor]
+[C:/BlazorCrud-/BlazorServerApp/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/Counter.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/DataList.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/DataList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUxpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/DropDown-List.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/DropDown-List.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJvcERvd24tTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/DropdownCheckboxList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJvcGRvd25DaGVja2JveExpc3QucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/DropDownChekBox.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/DropDownChekBox.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJvcERvd25DaGVrQm94LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/EmployeeView/AddNewEmployee.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/EmployeeView/AddNewEmployee.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVWaWV3XEFkZE5ld0VtcGxveWVlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/EmployeeView/DeleteEmployee.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/EmployeeView/DeleteEmployee.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVWaWV3XERlbGV0ZUVtcGxveWVlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/EmployeeView/EditEmployee.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/EmployeeView/EditEmployee.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVWaWV3XEVkaXRFbXBsb3llZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/EmployeeView/EmployeeList.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/EmployeeView/EmployeeList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVWaWV3XEVtcGxveWVlTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/FetchData.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/Index.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/RolesView/AddNewRoles.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/RolesView/AddNewRoles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sZXNWaWV3XEFkZE5ld1JvbGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/RolesView/DeleteRoles.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/RolesView/DeleteRoles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sZXNWaWV3XERlbGV0ZVJvbGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/RolesView/EditRoles.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/RolesView/EditRoles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sZXNWaWV3XEVkaXRSb2xlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/RolesView/RolesList.razor]
+[C:/BlazorCrud-/BlazorServerApp/Pages/RolesView/RolesList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sZXNWaWV3XFJvbGVzTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Shared/SurveyPrompt.razor]
+[C:/BlazorCrud-/BlazorServerApp/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/_Imports.razor]
+[C:/BlazorCrud-/BlazorServerApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Shared/MainLayout.razor]
+[C:/BlazorCrud-/BlazorServerApp/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-gp1kaosdc3
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Shared/NavMenu.razor]
+[C:/BlazorCrud-/BlazorServerApp/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-01dw2z9bbm
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/Error.cshtml]
+[C:/BlazorCrud-/BlazorServerApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/digip/Desktop/BlazorServerApp/BlazorServerApp/Pages/_Host.cshtml]
+[C:/BlazorCrud-/BlazorServerApp/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

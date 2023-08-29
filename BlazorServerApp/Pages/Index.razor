@@ -1,45 +1,26 @@
 ﻿@page "/"
-@using BlazorServerApp.Data
-@using BlazorServerApp.Model
-@inject RolesService rolesService
+@using Syncfusion.Blazor.DropDowns
 
-<h3>Dropdown Example</h3>
-<InputSelect Id="serviceRequested" @bind-Value="selectedValue" class="form-control" style="width:auto; margin-bottom:15px">
-    <option value="">Select a role</option>
-    @foreach (var item in rolesIsChek)
-    {
-        <div>
-            <input type="checkbox" @bind="item.IsChecked" />
-            <label>@item.RoleName</label>
-        </div>
-    }
-</InputSelect>
+<SfListBox TValue="string[]" DataSource="@Vehicles" TItem="VehicleData">
+    <ListBoxFieldSettings Text="Text" Value="Id" />
+    <ListBoxSelectionSettings ShowCheckbox="true" ShowSelectAll="true"></ListBoxSelectionSettings>
+</SfListBox>
 
-<p>Selected Value: @selectedValue</p>
- 
 @code {
-    List<Roles> rolesList;
-    private List<RoleCheckboxItem> rolesIsChek = new List<RoleCheckboxItem>
+    public List<VehicleData> Vehicles = new List<VehicleData>
     {
-        new RoleCheckboxItem { RoleName = "Admin", IsChecked = false },
-        new RoleCheckboxItem { RoleName = "User", IsChecked = false }
-
+        new VehicleData { Text = "Hennessey Venom", Id = "Vehicle-01" },
+        new VehicleData { Text = "Bugatti Chiron", Id = "Vehicle-02" },
+        new VehicleData { Text = "Bugatti Veyron Super Sport", Id = "Vehicle-03" },
+        new VehicleData { Text = "SSC Ultimate Aero", Id = "Vehicle-04" },
+        new VehicleData { Text = "Koenigsegg CCR", Id = "Vehicle-05" },
+        new VehicleData { Text = "McLaren F1", Id = "Vehicle-06" },
+        new VehicleData { Text = "Aston Martin One- 77", Id = "Vehicle-07" },
+        new VehicleData { Text = "Jaguar XJ220", Id = "Vehicle-08" }
     };
-    private class RoleCheckboxItem
+    public class VehicleData
     {
-        public string RoleName { get; set; }
-        public bool IsChecked { get; set; }
-    }
-    private string selectedValue = "";
-    protected override async Task OnInitializedAsync()
-    {
-        if (rolesService == null)
-        {
-            Console.WriteLine("rolesService is null");
-        }
-        else
-        {
-            rolesList = await rolesService.GetAllRolesAsync();
-        }
+        public string? Text { get; set; }
+        public string? Id { get; set; }
     }
 }

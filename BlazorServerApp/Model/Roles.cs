@@ -8,5 +8,7 @@ namespace BlazorServerApp.Model
 
         [Required]
         public string RoleName { get; set; }
+
+        public bool IsChecked { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iqNaoByCNEQGcEtrfmL3moBu8wH2BAUsQcLtnHDTasHgyrJ/15KaGpt0gZ68xmJHYlRNGTP+j4m0+mn8NjnoOA==",
+  "dgSpecHash": "lWuBBWSKl3c2bYrzVVVTzuHNPKN3Vy92/mQqTuW8k+PY2eHD5FfBHxrmOpb8tAUmdU8WerOx7106CFRyXPTQ9A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\digip\\Desktop\\BlazorServerApp\\BlazorServerApp\\BlazorServerApp.csproj",
+  "projectFilePath": "C:\\BlazorCrud-\\BlazorServerApp\\BlazorServerApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\digip\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\digip\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
