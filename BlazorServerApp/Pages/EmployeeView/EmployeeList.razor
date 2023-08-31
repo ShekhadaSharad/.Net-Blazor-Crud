@@ -20,12 +20,11 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Emp No</th>
-                <th>Employee Name</th>
-                <th>Employee City</th>
-                <th>Employee Email</th>
-                <th>Employee Phone</th>
-                <th>Employee Roles</th>
+                <th>No</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -38,17 +37,7 @@ else
                     <td>@emp.Name</td>
                     <td>@emp.City</td>
                     <td>@emp.Email</td>
-                    <td>@emp.Phone</td>
-                    <td>
-                        <InputSelect @bind-Value="selectedValue">
-                            <option value="">Select a role</option>
-                            @foreach (var item in roles)
-                            {
-                                <option value="@item.Id">@item.RoleName</option>
-                            }
-                        </InputSelect>
-                    </td>
-                   
+                    <td>@emp.Phone</td>                  
                     <td>
                         <a class="nav-link btn btn-outline-primary" href="EditEmployee/@emp.Id">
                             <samp class="oi oi-pencil" aria-hidden="true"> Edit</samp>
