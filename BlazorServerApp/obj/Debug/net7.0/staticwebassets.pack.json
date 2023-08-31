@@ -5,8 +5,8 @@
       "PackagePath": "staticwebassets\\BlazorServerApp.bundle.scp.css"
     },
     {
-      "Id": "C:\\BlazorCrud-\\BlazorServerApp\\wwwroot\\JavaScript\\JavaScript.js",
-      "PackagePath": "staticwebassets\\JavaScript\\JavaScript.js"
+      "Id": "C:\\BlazorCrud-\\BlazorServerApp\\wwwroot\\JavaScript\\DropDownCheckBox.js",
+      "PackagePath": "staticwebassets\\JavaScript\\DropDownCheckBox.js"
     },
     {
       "Id": "C:\\BlazorCrud-\\BlazorServerApp\\wwwroot\\css\\DropDownCheckBox.css",

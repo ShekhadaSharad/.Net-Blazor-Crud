@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cGyGpKxBO0tPbk3uY2CGQlJ8MYjJONAMlWbA6jUqZdE=",
+  "Hash": "7RDR/oPDfwMXc953EWCNWbaF9sRGt8co1Uv+8qKIRqk=",
   "Source": "BlazorServerApp",
   "BasePath": "_content/BlazorServerApp",
   "Mode": "Default",
@@ -289,12 +289,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\BlazorCrud-\\BlazorServerApp\\wwwroot\\JavaScript\\JavaScript.js",
+      "Identity": "C:\\BlazorCrud-\\BlazorServerApp\\wwwroot\\JavaScript\\DropDownCheckBox.js",
       "SourceId": "BlazorServerApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\BlazorCrud-\\BlazorServerApp\\wwwroot\\",
       "BasePath": "_content/BlazorServerApp",
-      "RelativePath": "JavaScript/JavaScript.js",
+      "RelativePath": "JavaScript/DropDownCheckBox.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -303,7 +303,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\JavaScript\\JavaScript.js"
+      "OriginalItemSpec": "wwwroot\\JavaScript\\DropDownCheckBox.js"
     },
     {
       "Identity": "C:\\Users\\digip\\.nuget\\packages\\syncfusion.blazor\\22.2.10\\staticwebassets\\scripts\\accumulationchart.min.js",
