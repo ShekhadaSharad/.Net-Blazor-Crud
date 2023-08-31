@@ -1,0 +1,120 @@
+﻿@page "/dropdown-example"
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Components.Forms
+@using BlazorServerApp.Data
+@using BlazorServerApp.Model
+@using Syncfusion.Blazor.DropDowns
+@inject RolesService rolesService
+@inject IJSRuntime IJSRuntime
+<h3>Dropdown Checkbox List</h3>
+
+    <div class="dropdown" data-control="checkbox-dropdown">
+        <label class="dropdown-label" @onclick="ToggleDropdown">Select</label>
+
+        <div class="dropdown-list">
+            <a href="#" data-toggle="check-all" class="dropdown-option">
+                Check All
+            </a>
+            @if (rolesList != null)
+            {
+                @foreach (var item in rolesList)
+                {
+                    <label class="dropdown-option">
+                        <input type="checkbox" name="dropdown-group" @bind="item.IsChecked" value="Selection 1" />
+                        @item.RoleName
+                    </label>
+                }
+            }
+        </div>
+    </div>
+<script src="javascript\javascript.js"></script>
+@code {
+    private List<Roles> rolesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rolesList = await rolesService.GetAllRolesAsync();
+    }
+
+    private async Task ToggleDropdown()
+    {
+        if (rolesList == null)
+        {
+            rolesList = await rolesService.GetAllRolesAsync();
+        }
+    }
+} 
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: #379937;
+    }
+
+    .dropdown {
+        position: relative;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .dropdown-list {
+        padding: 12px;
+        background: #fff;
+        position: absolute;
+        top: 30px;
+        left: 2px;
+        right: 2px;
+        box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .15);
+        transform-origin: 50% 0;
+        transform: scale(1, 0);
+        transition: transform .15s ease-in-out .15s;
+        max-height: 66vh;
+        overflow-y: scroll;
+    }
+
+    .dropdown-option {
+        display: block;
+        padding: 8px 12px;
+        opacity: 0;
+        transition: opacity .15s ease-in-out;
+    }
+
+    .dropdown-label {
+        display: block;
+        height: 30px;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+        .dropdown-label:before {
+            content: '▼';
+            float: right;
+        }
+
+    .on .dropdown-list {
+        transform: scale(1, 1);
+        transition-delay: 0s;
+    }
+
+    .on .dropdown-option {
+        opacity: 1;
+        transition-delay: .2s;
+    }
+
+    .on .dropdown-label:before {
+        content: '▲';
+    }
+
+    [type="checkbox"] {
+        position: relative;
+        top: -1px;
+        margin-right: 4px;
+    }
+
+</style>

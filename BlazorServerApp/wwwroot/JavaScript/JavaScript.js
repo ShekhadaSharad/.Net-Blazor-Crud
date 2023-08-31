@@ -1,4 +1,4 @@
-﻿    (function ($) {
+﻿(function ($) {
         var CheckboxDropdown = function (el) {
             var _this = this;
             this.isOpen = false;
@@ -37,23 +37,27 @@
 
             if (checked.length <= 0) {
                 this.$label.html('Select Options');
-            } else if (checked.length === 1) {
+            }
+            else if (checked.length === 1) {
                 this.$label.html(checked.parent('label').text());
-            } else if (checked.length === this.$inputs.length) {
+            }
+            else if (checked.length === this.$inputs.length) {
                 this.$label.html('All Selected');
                 this.areAllChecked = true;
                 this.$checkAll.html('Uncheck All');
-            } else {
+            }
+            else {
                 this.$label.html(checked.length + ' Selected');
             }
         };
-
+        //CheckBoxes Checking or Unchecking
         CheckboxDropdown.prototype.onCheckAll = function (checkAll) {
             if (!this.areAllChecked || checkAll) {
                 this.areAllChecked = true;
                 this.$checkAll.html('Uncheck All');
                 this.$inputs.prop('checked', true);
-            } else {
+            }
+            else {
                 this.areAllChecked = false;
                 this.$checkAll.html('Check All');
                 this.$inputs.prop('checked', false);
@@ -62,6 +66,7 @@
             this.updateStatus();
         };
 
+        //DropDown down up
         CheckboxDropdown.prototype.toggleOpen = function (forceOpen) {
             var _this = this;
 
@@ -73,7 +78,8 @@
                         _this.toggleOpen();
                     }
                 });
-            } else {
+            }
+            else {
                 this.isOpen = false;
                 this.$el.removeClass('on');
                 $(document).off('click');
@@ -84,4 +90,4 @@
         for (var i = 0, length = checkboxesDropdowns.length; i < length; i++) {
             new CheckboxDropdown(checkboxesDropdowns[i]);
         }
-    })(jQuery);
+})(jQuery);
